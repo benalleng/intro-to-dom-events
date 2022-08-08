@@ -8,8 +8,10 @@ const body = document.querySelector('body');
 
 // Event listeners
 btn.addEventListener('click', handleButtonPress);
-// body.addEventListener('click', handleButtonPress);
+input.addEventListener('keydown', handleEnterPress);
 list.addEventListener('click', handleLiClick);
+
+// body.addEventListener('click', handleButtonPress);
 
 
 // Functions
@@ -24,11 +26,17 @@ function handleButtonPress(event) {
     input.focus();
 }
 
+function handleEnterPress(event) {    
+        if (event.keyCode === 13) {
+            handleButtonPress(event);
+    }
+}
+
 function handleLiClick() {
     // only allow for li tags to trigger events
     if (event.target.tagName === 'LI') {
-
-        if (event.target.style.textDecoration === 'none') {
+        event.target.style.color = 'red'; 
+        if (event.target.style.textDecoration == 'none') {
             event.target.style.textDecoration = 'line-through';
         } else {
             event.target.style.textDecoration = 'none';
